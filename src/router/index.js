@@ -31,6 +31,16 @@ const routes = [
         component: () => import(/* webpackChunkName: 'menu' */'@/views/menu/index')
       },
       {
+        path: '/menu/create',
+        name: 'menu-create',
+        component: () => import(/* webpackChunkName: 'menu-create' */'@/views/menu/create2')
+      },
+      {
+        path: '/menu/:id/edit',
+        name: 'menu-edit',
+        component: () => import(/* webpackChunkName: 'menu-edit' */'@/views/menu/edit')
+      },
+      {
         path: '/resource',
         name: 'resource',
         component: () => import(/* webpackChunkName: 'resource' */'@/views/resource/index')
@@ -68,14 +78,14 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to,from,next) => {
+router.beforeEach((to, from, next) => {
   // 官⽅示例，检测路由是否需要登录
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // 检测 store 中的 user是否存在
-    if (!store.state.user){
+    if (!store.state.user) {
       // 未登录，导航跳转到登录⻚
       next({
-        name:'login',
+        name: 'login',
         query: {
           redirect: to.fullPath
         }
@@ -84,7 +94,7 @@ router.beforeEach((to,from,next) => {
       // 已经登录，允许通过
       next()
     }
-  }else{
+  } else {
     // ⽆需登录，允许通过
     next()
   }

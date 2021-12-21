@@ -1,17 +1,16 @@
 <template>
   <div class="resource">
-    <!-- <resource-list></resource-list> -->
-    resource
+    <resource-list></resource-list>
   </div>
 </template>
 
 <script>
-// import ResourceList from './components/List'
+import ResourceList from './components/List2'
 export default {
   name: 'ResourceIndex',
-  // components: {
-  //   ResourceList
-  // }
+  components: {
+    ResourceList
+  }
 }
 </script>
 

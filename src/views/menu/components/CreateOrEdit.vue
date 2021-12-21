@@ -2,7 +2,7 @@
   <div class="menu-create-or-edit">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>{{ isEdit ? '编辑菜单' : '添加菜单' }}</span>
+        <span>{{isEdit ? "编辑菜单":"添加菜单"}}</span>
       </div>
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="菜单名称">
@@ -54,14 +54,11 @@
 
 <script>
 import { getEditMenuInfo, createOrUpdateMenu } from '@/services/menu'
-
 export default {
   name: 'CreateOrEdit',
-  // 通过 props 接收父组件传值，判断当前是哪种功能（添加或编辑）
   props: {
     isEdit: {
       type: Boolean,
-      // 默认为添加功能
       default: false
     }
   },
@@ -82,33 +79,27 @@ export default {
     }
   },
   created () {
-    // 加载上级菜单信息
     this.loadMenuInfo()
   },
   methods: {
     async onSubmit () {
-      // 1. 表单验证
-      // 2. 发送请求
       const { data } = await createOrUpdateMenu(this.form)
       if (data.code === '000000') {
         this.$message.success('提交成功')
-        this.$router.push({
-          name: 'menu'
-        })
+        this.$router.push('/menu')
       }
+      console.log('submit')
     },
     async loadMenuInfo () {
-      // 检测是否存在路由参数 id, 并进行对应处理
-      const id = this.$route.params.id || -1
-      // 请求菜单数据（上级菜单数据）
+      // undefined -> -1
+      const id = this.$route.params.id
+      // console.log(id)
       const { data } = await getEditMenuInfo(id)
+      if (data.data.menuInfo) {
+        this.form = data.data.menuInfo
+      }
       if (data.code === '000000') {
-        // 将上级菜单数据保存，进行数据绑定
         this.parentMenuList = data.data.parentMenuList
-        // 检测是否存在菜单数据 menuInfo，如果存在，更新给 form 即可
-        if (data.data.menuInfo) {
-          this.form = data.data.menuInfo
-        }
       }
     }
   }
