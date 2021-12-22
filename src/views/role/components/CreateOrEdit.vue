@@ -25,7 +25,9 @@
 </template>
 
 <script>
-import { createOrUpdate, getRoleById } from '@/services/role'
+// import { createOrUpdate, getRoleById } from '@/services/role'
+import { getRoleSaveOrUpdate, getRoleById } from '@/services/roles'
+
 export default {
   name: 'CreateOrEdit',
   props: {
@@ -64,7 +66,7 @@ export default {
       this.role = {}
     },
     async onSubmit () {
-      const { data } = await createOrUpdate(this.role)
+      const { data } = await getRoleSaveOrUpdate(this.role)
       if (data.code === '000000') {
         // 关闭提示框（需要子组件向父组件传递状态）
         this.$emit('success')

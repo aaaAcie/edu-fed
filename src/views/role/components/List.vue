@@ -92,7 +92,8 @@
 <script>
 import CreateOrEdit from './CreateOrEdit'
 // 引入请求方法
-import { getRoles, deleteRole } from '@/services/role'
+// import { getRoles, deleteRole } from '@/services/role'
+import { getRolePages, getDeleteResult } from '@/services/roles'
 
 export default {
   name: 'RoleList',
@@ -145,7 +146,7 @@ export default {
     handleDelete (role) {
       this.$confirm(`确认删除角色：${role.name}？`, '删除提示')
         .then(async () => {
-          await deleteRole(role.id)
+          await getDeleteResult(role.id)
           this.$message.success('删除成功')
           this.loadRoles()
         })
@@ -160,7 +161,7 @@ export default {
     // 请求角色列表数据
     async loadRoles () {
       this.isLoading = true
-      const { data } = await getRoles(this.form)
+      const { data } = await getRolePages(this.form)
       this.roles = data.data.records
       this.isLoading = false
     }
