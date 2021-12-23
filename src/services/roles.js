@@ -33,3 +33,28 @@ export const getRoleById = id => {
     url: `/boss/role/${id}`
   })
 }
+
+// 获取所有⻆⾊
+export const getAllRoles = id => {
+  return request({
+    method: 'GET',
+    url: '/boss/role/all'
+  })
+}
+
+// 给⽤户分配⻆⾊ 信息接口
+export const allocateUserRoles = (data) => {
+  return request({
+    method: 'POST',
+    url: '/boss/role/allocateUserRoles',
+    data
+  })
+}
+
+// 查询⽤户⻆⾊
+export const getUserRoles = userId => {
+  return request({
+    method: 'GET',
+    url: `/boss/role/user/${userId}`
+  })
+}

@@ -4,7 +4,7 @@ import router from '@/router'
 import qs from 'qs'
 import { Message } from 'element-ui'
 const request = axios.create({
-  timeout: 5000
+  // timeout: 5000
   // baseURL:
 })
 

@@ -5,13 +5,13 @@
 </template>
 
 <script>
-// import UserList from './components/List'
+import UserList from './components/List2'
 
 export default {
   name: 'UserIndex',
-  // components: {
-  //   UserList
-  // }
+  components: {
+    UserList
+  }
 }
 </script>
 
