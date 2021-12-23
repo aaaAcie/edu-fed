@@ -32,3 +32,33 @@ export const deleteMenu = (id) => {
     url: `/boss/menu/${id}`
   })
 }
+
+// 获取所有菜单并按层级展示  接口
+export const getMenuNodeList = () => {
+  return request({
+    method: 'GET',
+    url: '/boss/menu/getMenuNodeList'
+  })
+}
+
+// 给角色分配菜单 接口
+export const allocateRoleMenus = (data) => {
+  return request({
+    method: 'POST',
+    url: '/boss/menu/allocateRoleMenus',
+    data
+  })
+}
+
+// 获取角色拥有的彩蛋列表 接口
+// axios 会把 params 转换为 urlencoded 并以 ? 连接到 url 后面
+export const getRoleMenus = (roleId) => {
+  return request({
+    method: 'GET',
+    // url: `/boss/menu/getRoleMenus?roleId=${roleId}`,
+    url: '/boss/menu/getRoleMenus',
+    params: {
+      roleId
+    }
+  })
+}
