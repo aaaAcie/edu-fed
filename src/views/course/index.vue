@@ -5,13 +5,13 @@
 </template>
 
 <script>
-// import CourseList from './components/List'
+import CourseList from './components/List2'
 
 export default {
   name: 'CourseIndex',
-  // components: {
-  //   CourseList
-  // }
+  components: {
+    CourseList
+  }
 }
 </script>
 

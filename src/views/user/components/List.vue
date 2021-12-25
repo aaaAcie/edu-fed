@@ -3,33 +3,33 @@
   <el-card>
     <div slot="header">
       <el-form
-      :inline="true"
-      :model="filterParams"
-      ref="filter-form">
-        <el-form-item label="手机号" prop="phone">
-          <el-input v-model="filterParams.phone"></el-input>
-        </el-form-item>
-        <el-form-item label="注册时间" prop="rangeDate">
-          <el-date-picker
-            v-model="filterParams.rangeDate"
-            type="datetimerange"
-            range-separator="至"
-            start-placeholder="开始时间"
-            end-placeholder="结束时间"
-            value-format="yyyy-MM-dd"
-          />
-        </el-form-item>
-        <el-form-item>
-          <el-button
-            :disabled="isLoading"
-            @click="handleReset"
-          >重置</el-button>
-          <el-button
-            type="primary"
-            @click="handleQuery"
-            :disabled="isLoading"
-          >查询</el-button>
-        </el-form-item>
+        :inline="true"
+        :model="filterParams"
+        ref="filter-form">
+          <el-form-item label="手机号" prop="phone">
+            <el-input v-model="filterParams.phone"></el-input>
+          </el-form-item>
+          <el-form-item label="注册时间" prop="rangeDate">
+            <el-date-picker
+              v-model="filterParams.rangeDate"
+              type="datetimerange"
+              range-separator="至"
+              start-placeholder="开始时间"
+              end-placeholder="结束时间"
+              value-format="yyyy-MM-dd"
+            />
+          </el-form-item>
+          <el-form-item>
+            <el-button
+              :disabled="isLoading"
+              @click="handleReset"
+            >重置</el-button>
+            <el-button
+              type="primary"
+              @click="handleQuery"
+              :disabled="isLoading"
+            >查询</el-button>
+          </el-form-item>
       </el-form>
     </div>
     <el-table

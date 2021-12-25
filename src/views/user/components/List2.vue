@@ -63,8 +63,8 @@
                 <template slot-scope="scope">
                     <el-switch
                         v-model="scope.row.status"
-                        active-value="ENABLE"
-                        inactive-value="DISABLE"
+                        :active-value="1"
+                        :inactive-value="0"
                         active-color="#13ce66"
                         inactive-color="#ff4949"
                         @change="handleForbidUser(scope.row)"
@@ -135,6 +135,10 @@ export default {
     this.loadUserPages()
   },
   methods: {
+    handleForbidUser (row) {
+      console.log(row)
+      // row.status =
+    },
     // 提交分配
     async handleAllocRole () {
       const { data } = await allocateUserRoles({
