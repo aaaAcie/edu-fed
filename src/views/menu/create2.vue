@@ -1,6 +1,6 @@
 <template>
   <div class="menu-create">
-      <CreateOrEdit></CreateOrEdit>
+      <create-or-edit></create-or-edit>
   </div>
 </template>
 

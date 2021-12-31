@@ -90,7 +90,7 @@
                         @click="$router.push({
                             name: 'course-edit',
                             params: {
-                            courseId: scope.row.id
+                                courseId: scope.row.id
                             }
                         })"
                         >编辑</el-button>
@@ -102,6 +102,9 @@
                                 }
                             })"
                         >内容管理</el-button>
+                        <el-button
+                            @click="test(scope.row)"
+                        >test row</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -139,6 +142,9 @@ export default {
     this.loadQueryCourses()
   },
   methods: {
+    test(row){
+        console.log(row)
+    },
     async onStateChange (row) {
       const { data } = await changeState({
         courseId: row.id,
